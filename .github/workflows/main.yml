@@ -1,0 +1,23 @@
+name: Revision BootCamp2020 Class-1 
+
+on: 
+  push:
+    branches: [ master ]
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Installing Node Module
+      uses: actions/setup-note@v2-beta
+      with:
+        node-version: 12
+    - name: Installing surge
+      run: npm install --global surge
+    - name: deploying using surge
+      run: surge ./ Rev-bootcapm2020_class2.surge.sh --token $ {{ secrets.SURGE_TOKEN }}
+      
+      
+    
